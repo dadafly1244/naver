@@ -1,0 +1,55 @@
+@import './variables.scss';
+@import './colors.scss';
+
+
+header {
+    display: flex;
+    justify-content: center;
+ & .inner {
+    @include inner;
+    border: 1px solid blue;
+    height: fit-content;
+    // @include center;
+  }
+  .top_icon_wrapper {
+    height: 4rem;
+  }
+  .top_icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid $white-color;
+
+    &:hover {
+      background-color: $divider-color;
+      border: 2px solid $divider-color;
+    }
+    position:absolute;
+    top: 1rem;
+  
+  }
+  .menu {
+    left: 3rem;
+  }
+  .pay {
+    left: 6rem;
+  }
+  .message {
+    right: 6rem;
+    }
+  .bell {
+    right: 3rem;
+  } 
+  .search {
+  .main_logo {
+    width: 6rem;
+    height: 2rem;
+
+
+    }
+  .search_form{
+    
+  }
+  }
+  
+}
