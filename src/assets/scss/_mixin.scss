@@ -11,7 +11,10 @@
 }
 
 @mixin inner() {
-  width: 80rem;
+  max-width: 90rem;
+  min-width: 80rem;
+  border: '1px solid blue';
+
 }
 
 @mixin center(){
@@ -21,9 +24,116 @@
     justify-content: center;
   }
 }
+@mixin left($padding){
+  &{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: $padding;
+  }
+}
 
 @mixin shadow(){
-&{
-  box-shadow: 0px 2px 0px 2px rgba((189,189,189, 0.2)) ;
+  &{
+    box-shadow: 0px 2px 0px 2px rgba(189, 189, 189, 0.2) ;
+  }
 }
+
+@mixin cardBorder(){
+  border: 1px solid $divider-color;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
 }
+
+@mixin topIcon(){
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid $white-color;
+  background-color: $white-color;
+
+  &:hover {
+    background-color: $divider-color;
+    border: 2px solid $divider-color;
+  }
+  position:absolute;
+  top: 1rem;
+}
+
+@mixin backgroundImageCenter($src) {
+  background: {
+    image: url($src);
+    position: center;
+    size: cover;
+  };
+}
+
+@mixin afterTextSlash($content, $slashSize) {
+  &::after{
+    content: $content;
+    color: $divider-color;
+    margin-left: 1rem;
+    font-size: $slashSize;
+  }
+  &:last-child::after{
+    content: none;
+  }
+}
+
+@mixin afterContent($content, $slashSize, $color) {
+  &::after{
+    content: $content;
+    color: $color;
+    margin: 0.5rem;
+    font-size: $slashSize;
+  }
+}
+
+
+@mixin cardTitle($font-size, $firstContent){
+  &__nav{
+    margin: 0.5rem;
+    &__button{
+      font-size: $font-size;
+      @include afterTextSlash("/",1rem);
+      &:first-child{
+        @include afterTextSlash($firstContent,1rem);
+      }
+      &__selected{
+        font-size: $font-size;
+        @include afterTextSlash("/",1rem);
+          font-weight: 700;
+          &:first-child{
+          @include afterTextSlash( $firstContent,1rem);
+        }
+      }
+    }
+  }
+}
+
+@mixin cardPagination($titleColor){
+  &__pagination{
+        @include center;
+        height: 3.5rem;
+        border-top: 1px solid $divider-color;
+        &_button{
+          margin: 0 1.2rem;
+          width: 2rem;
+          height: 2rem;
+          background-color: white;
+          border-radius: 50%;
+          border: 1px solid $divider-color;
+          &:hover{
+            background-color: $divider-color;
+            border: 1px solid $secondary-text-color;
+          }
+        }
+        .title{
+          color: $titleColor;
+        }
+        em{
+          font-weight: 500;
+        }
+      }
+}
+
