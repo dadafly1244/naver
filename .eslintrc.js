@@ -25,6 +25,7 @@ module.exports = {
     'semi': "off",
     'indent':["error", 2],
     "no-unused-vars": "off",
+    "react/prop-types": "off"
   },
   settings: {
     react: { version: 'detect' },
